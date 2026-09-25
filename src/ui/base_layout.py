@@ -22,7 +22,7 @@ def style_background_dashboard():
         """
         <style>
         .stApp {
-            background: #6A89A7 !important;
+            background: #E0E3FF !important;
         }
         </style>
         """,
