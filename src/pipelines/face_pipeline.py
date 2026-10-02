@@ -25,7 +25,7 @@ def get_face_embeddings(image_np):
     encodings = []
     for face in faces:
         shape = sp(image_np , face)
-        face_descriptor = facerec.computer_face_descriptor(image_np , shape,1)
+        face_descriptor = facerec.compute_face_descriptor(image_np, shape, 1)
         encodings.append(np.array(face_descriptor))
         return encodings
 
@@ -93,4 +93,4 @@ def predict_attendance(class_image_np):
         if best_match_score <= resemblance_threshold:
             detected_student[predict_id] = True
 
-    return detected_student , all_students , len(encoding)
+    return detected_student , all_students , len(encodings)
