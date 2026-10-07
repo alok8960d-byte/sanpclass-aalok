@@ -27,7 +27,7 @@ def identify_speaker(new_embedding, candidates_dict , threshold=0.65):
     best_sid =None
     best_score = -1.0
 
-    for sid , stored_embedding in candidates_dict.item():
+    for sid , stored_embedding in candidates_dict.items():
         if stored_embedding:
             similarity = np.dot(new_embedding , stored_embedding)
             if similarity> best_score:
@@ -61,11 +61,11 @@ def process_bulk_audio(audio_bytes , candidates_dict , threshold=0.65):
             sid , score = identify_speaker(embedding , candidates_dict , threshold)
 
             if sid:
-                if sid not in identify_speaker or score > identify_results[sid]:
+                if sid not in identify_results or score > identify_results[sid]:
                     identify_results[sid] = score
 
         return identify_results
     
     except Exception as e:
-        st.error('bulk process error')
+        st.error(f'bulk process error {e}')
         return{}
